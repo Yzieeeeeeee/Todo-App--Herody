@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "804933093325",
+    "firebase_url": "https://to-do-f6e06-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "to-do-f6e06",
     "storage_bucket": "to-do-f6e06.firebasestorage.app"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.example.to_do_app_herody"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "804933093325-lnvqpi1qlqvg53tbda11gq3i9sg26egj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.to_do_app_herody",
+            "certificate_hash": "7456f60eb890807adb5b0be7c27b6dee0cb192d4"
+          }
+        },
+        {
+          "client_id": "804933093325-crd2l1in121h3oqd9nogudn7ms08au09.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCwe_973qbKxP3rXRX7JLzighDXJujqj8s"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804933093325-crd2l1in121h3oqd9nogudn7ms08au09.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

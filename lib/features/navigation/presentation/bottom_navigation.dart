@@ -283,7 +283,9 @@ class _BottomNavigationState extends State<BottomNavigation>
                             letterSpacing: 0.2,
                           ),
                           child: isSelected
-                              ? Flexible(
+                              ? AnimatedSize(
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeOutCubic,
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 6),
                                     child: Text(
@@ -397,19 +399,17 @@ class _BottomNavigationState extends State<BottomNavigation>
                               duration: const Duration(milliseconds: 300),
                               curve: Curves.easeOutCubic,
                               child: isSelected
-                                  ? Flexible(
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 6),
-                                        child: Text(
-                                          item.label,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                            fontSize: 11,
-                                            fontWeight: FontWeight.w700,
-                                            color: Colors.white,
-                                            letterSpacing: 0.2,
-                                          ),
+                                  ? Padding(
+                                      padding: const EdgeInsets.only(left: 6),
+                                      child: Text(
+                                        item.label,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.white,
+                                          letterSpacing: 0.2,
                                         ),
                                       ),
                                     )

@@ -133,7 +133,7 @@ class _ProfileScreenState extends State<ProfileScreen>
       builder: (ctx) => _buildDialog(
         icon: Icons.logout_rounded,
         iconColor: Colors.red.shade400,
-        iconBg: Colors.red.shade50,
+        iconBg: Colors.red.withValues(alpha: 0.1),
         title: 'Logout',
         message: 'Are you sure you want to logout?',
         confirmLabel: 'Logout',
