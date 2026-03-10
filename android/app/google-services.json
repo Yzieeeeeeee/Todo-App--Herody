@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "804933093325",
+    "project_id": "to-do-f6e06",
+    "storage_bucket": "to-do-f6e06.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804933093325:android:e964dfafaab29557eda684",
+        "android_client_info": {
+          "package_name": "com.example.to_do_app_herody"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwe_973qbKxP3rXRX7JLzighDXJujqj8s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
