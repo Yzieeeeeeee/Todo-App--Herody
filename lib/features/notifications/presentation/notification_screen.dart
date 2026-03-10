@@ -188,10 +188,10 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                 width: 46,
                 height: 46,
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.white.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
-                    color: Colors.white.withOpacity(0.3),
+                    color: Colors.white.withValues(alpha: 0.3),
                     width: 1.5,
                   ),
                 ),
@@ -218,7 +218,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                       'Performance insights & reminders',
                       style: GoogleFonts.poppins(
                         fontSize: 12,
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.1),
                       ),
                     ),
                   ],
@@ -239,7 +239,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                       color: Colors.white.withOpacity(0.18),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
-                        color: Colors.white.withOpacity(0.3),
+                        color: Colors.white.withValues(alpha: 0.3),
                         width: 1,
                       ),
                     ),
@@ -284,7 +284,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     child: Container(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.14),
+        color: Colors.white.withValues(alpha: 0.14),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Row(
@@ -636,7 +636,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
               width: 60,
               height: 60,
               decoration: BoxDecoration(
-                color: Colors.orange.shade50,
+                color: Colors.orange.withValues(alpha: 0.15),
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -683,7 +683,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                     child: Text(
                       'Cancel',
                       style: GoogleFonts.poppins(
-                        color: Colors.grey.shade500,
+                        color: Theme.of(context).hintColor,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
