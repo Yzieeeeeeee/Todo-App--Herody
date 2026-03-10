@@ -232,8 +232,8 @@ class _BottomNavigationState extends State<BottomNavigation>
                     duration: const Duration(milliseconds: 350),
                     curve: Curves.easeOutCubic,
                     padding: EdgeInsets.symmetric(
-                      horizontal: isSelected ? 18 : 12,
-                      vertical: 7,
+                      horizontal: isSelected ? 14 : 10,
+                      vertical: 6,
                     ),
                     decoration: BoxDecoration(
                       gradient: isSelected
@@ -279,13 +279,19 @@ class _BottomNavigationState extends State<BottomNavigation>
                                 ? Colors.white
                                 : Colors.transparent,
                             fontWeight: FontWeight.w700,
-                            fontSize: isSelected ? 12 : 0,
-                            letterSpacing: 0.3,
+                            fontSize: isSelected ? 11 : 0,
+                            letterSpacing: 0.2,
                           ),
                           child: isSelected
-                              ? Padding(
-                                  padding: const EdgeInsets.only(left: 6),
-                                  child: Text(item.label),
+                              ? Flexible(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 6),
+                                    child: Text(
+                                      item.label,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
                                 )
                               : const SizedBox.shrink(),
                         ),
@@ -346,8 +352,8 @@ class _BottomNavigationState extends State<BottomNavigation>
                         duration: const Duration(milliseconds: 350),
                         curve: Curves.easeOutCubic,
                         padding: EdgeInsets.symmetric(
-                          horizontal: isSelected ? 18 : 12,
-                          vertical: 7,
+                          horizontal: isSelected ? 14 : 10,
+                          vertical: 6,
                         ),
                         decoration: BoxDecoration(
                           gradient: isSelected
@@ -391,15 +397,19 @@ class _BottomNavigationState extends State<BottomNavigation>
                               duration: const Duration(milliseconds: 300),
                               curve: Curves.easeOutCubic,
                               child: isSelected
-                                  ? Padding(
-                                      padding: const EdgeInsets.only(left: 6),
-                                      child: Text(
-                                        item.label,
-                                        style: const TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w700,
-                                          color: Colors.white,
-                                          letterSpacing: 0.3,
+                                  ? Flexible(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(left: 6),
+                                        child: Text(
+                                          item.label,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: const TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w700,
+                                            color: Colors.white,
+                                            letterSpacing: 0.2,
+                                          ),
                                         ),
                                       ),
                                     )
