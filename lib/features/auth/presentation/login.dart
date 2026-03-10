@@ -458,7 +458,7 @@ class _LoginScreenState extends State<LoginScreen>
             ],
           ),
           child: Text(
-            '✦  Sign in to TaskFlow',
+            '✦  Sign in to Todo',
             style: GoogleFonts.poppins(
               fontSize: 12,
               fontWeight: FontWeight.w600,

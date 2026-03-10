@@ -375,7 +375,7 @@ class _RateAppScreenState extends State<RateAppScreen>
                     const SizedBox(height: 14),
 
                     Text(
-                      _alreadyRated ? 'Update Your Rating' : 'Rate TaskFlow',
+                      _alreadyRated ? 'Update Your Rating' : 'Rate Todo',
                       style: GoogleFonts.poppins(
                         fontSize: 26,
                         fontWeight: FontWeight.w800,
