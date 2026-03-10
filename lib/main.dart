@@ -24,16 +24,22 @@ void main() async {
     ),
   );
 
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: "AIzaSyCwe_973qbKxP3rXRX7JLzighDXJujqj8s",
-      appId: "1:804933093325:android:e964dfafaab29557eda684",
-      messagingSenderId: "804933093325",
-      projectId: "to-do-f6e06",
-      databaseURL:
-          "https://to-do-f6e06-default-rtdb.asia-southeast1.firebasedatabase.app",
-    ),
-  );
+  try {
+    if (Firebase.apps.isEmpty) {
+      await Firebase.initializeApp(
+        options: const FirebaseOptions(
+          apiKey: "AIzaSyCwe_973qbKxP3rXRX7JLzighDXJujqj8s",
+          appId: "1:804933093325:android:e964dfafaab29557eda684",
+          messagingSenderId: "804933093325",
+          projectId: "to-do-f6e06",
+          databaseURL:
+              "https://to-do-f6e06-default-rtdb.asia-southeast1.firebasedatabase.app",
+        ),
+      );
+    }
+  } catch (e) {
+    debugPrint("Firebase already initialized or failed: $e");
+  }
 
   // ── Init local notifications (channels + timezone) ────────────
 
@@ -42,7 +48,6 @@ void main() async {
       providers: [
         // Theme provider
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
-
         // 1. Auth — no dependencies
         ChangeNotifierProvider(create: (_) => AuthProvider()),
 

@@ -156,8 +156,8 @@ class _ProfileScreenState extends State<ProfileScreen>
       isScrollControlled: true,
       builder: (ctx) => Container(
         padding: const EdgeInsets.all(28),
-        decoration: const BoxDecoration(
-          color: Colors.white,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
         ),
         child: Column(
@@ -199,12 +199,12 @@ class _ProfileScreenState extends State<ProfileScreen>
 
             const SizedBox(height: 20),
 
-            const Text(
+            Text(
               'Focus App Lock',
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w800,
-                color: Color(0xFF1F2937),
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
 
@@ -468,7 +468,7 @@ class _ProfileScreenState extends State<ProfileScreen>
     final contentBottom = Responsive.contentBottomPadding(context);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F7FF),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Responsive.centeredContent(
           context: context,
@@ -487,19 +487,29 @@ class _ProfileScreenState extends State<ProfileScreen>
                       margin: const EdgeInsets.only(top: 16),
                       padding: const EdgeInsets.all(28),
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
-                          colors: [
-                            Color(0xFF6C63FF),
-                            Color(0xFF3B82F6),
-                            Color(0xFF06B6D4),
-                          ],
+                          colors: themeProvider.isDarkMode
+                              ? [
+                                  const Color(0xFF4F46E5),
+                                  const Color(0xFF2563EB),
+                                  const Color(0xFF0891B2),
+                                ]
+                              : [
+                                  const Color(0xFF6C63FF),
+                                  const Color(0xFF3B82F6),
+                                  const Color(0xFF06B6D4),
+                                ],
                         ),
                         borderRadius: BorderRadius.circular(32),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFF6C63FF).withOpacity(0.35),
+                            color:
+                                (themeProvider.isDarkMode
+                                        ? const Color(0xFF4F46E5)
+                                        : const Color(0xFF6C63FF))
+                                    .withValues(alpha: 0.35),
                             blurRadius: 30,
                             offset: const Offset(0, 12),
                           ),
@@ -691,11 +701,11 @@ class _ProfileScreenState extends State<ProfileScreen>
                     child: Container(
                       padding: const EdgeInsets.all(22),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.surface,
                         borderRadius: BorderRadius.circular(24),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.05),
+                            color: Colors.black.withValues(alpha: 0.05),
                             blurRadius: 16,
                             offset: const Offset(0, 4),
                           ),
@@ -720,12 +730,14 @@ class _ProfileScreenState extends State<ProfileScreen>
                                 ),
                               ),
                               const SizedBox(width: 12),
-                              const Text(
+                              Text(
                                 'Overall Progress',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xFF1F2937),
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurface,
                                 ),
                               ),
                               const Spacer(),
@@ -755,7 +767,10 @@ class _ProfileScreenState extends State<ProfileScreen>
                               builder: (context, value, _) =>
                                   LinearProgressIndicator(
                                     value: value,
-                                    backgroundColor: const Color(0xFFF3F4F6),
+                                    backgroundColor: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface
+                                        .withValues(alpha: 0.05),
                                     valueColor: const AlwaysStoppedAnimation(
                                       Color(0xFF6C63FF),
                                     ),
@@ -794,7 +809,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                         _toggleTile(
                           icon: Icons.lock_clock_rounded,
                           iconColor: const Color(0xFFEF4444),
-                          iconBg: const Color(0xFFFFEDED),
+                          iconBg: const Color(
+                            0xFFEF4444,
+                          ).withValues(alpha: 0.15),
                           title: 'App Lock on Focus',
                           subtitle: _appLockOnFocus
                               ? 'Blocks distractions during focus'
@@ -815,7 +832,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                               width: 28,
                               height: 28,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFEEEDFF),
+                                color: const Color(
+                                  0xFF6C63FF,
+                                ).withValues(alpha: 0.15),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: const Icon(
@@ -830,7 +849,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                         _toggleTile(
                           icon: Icons.volume_up_rounded,
                           iconColor: const Color(0xFF3B82F6),
-                          iconBg: const Color(0xFFEFF6FF),
+                          iconBg: const Color(
+                            0xFF3B82F6,
+                          ).withValues(alpha: 0.15),
                           title: 'Focus Sounds',
                           subtitle: 'Play sound when timer ends',
                           value: _soundEnabled,
@@ -862,7 +883,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                         _toggleTile(
                           icon: Icons.notifications_active_rounded,
                           iconColor: const Color(0xFF6C63FF),
-                          iconBg: const Color(0xFFEEEDFF),
+                          iconBg: const Color(
+                            0xFF6C63FF,
+                          ).withValues(alpha: 0.15),
                           title: 'Push Notifications',
                           subtitle: 'Task reminders and updates',
                           value: _notificationsEnabled,
@@ -880,7 +903,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                         _toggleTile(
                           icon: Icons.alarm_rounded,
                           iconColor: const Color(0xFFF59E0B),
-                          iconBg: const Color(0xFFFFF8E7),
+                          iconBg: const Color(
+                            0xFFF59E0B,
+                          ).withValues(alpha: 0.15),
                           title: 'Daily Reminder',
                           subtitle: _dailyReminder
                               ? 'Reminds at ${_reminderTime.format(context)}'
@@ -897,7 +922,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                           _actionTile(
                             icon: Icons.access_time_rounded,
                             iconColor: const Color(0xFFF59E0B),
-                            iconBg: const Color(0xFFFFF8E7),
+                            iconBg: const Color(
+                              0xFFF59E0B,
+                            ).withValues(alpha: 0.15),
                             title: 'Reminder Time',
                             subtitle: _reminderTime.format(context),
                             onTap: _pickReminderTime,
@@ -923,7 +950,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                         _toggleTile(
                           icon: Icons.dark_mode_rounded,
                           iconColor: const Color(0xFF1F2937),
-                          iconBg: const Color(0xFFF3F4F6),
+                          iconBg: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withValues(alpha: 0.1),
                           title: 'Dark Mode',
                           subtitle: 'Easy on the eyes at night',
                           value: themeProvider.isDarkMode,
@@ -957,7 +986,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                         _actionTile(
                           icon: Icons.privacy_tip_outlined,
                           iconColor: const Color(0xFF10B981),
-                          iconBg: const Color(0xFFE8FDF5),
+                          iconBg: const Color(
+                            0xFF10B981,
+                          ).withValues(alpha: 0.15),
                           title: 'Privacy Policy',
                           subtitle: 'How we use your data',
                           onTap: () => context.push('/privacy-policy'),
@@ -966,7 +997,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                         _actionTile(
                           icon: Icons.help_outline_rounded,
                           iconColor: const Color(0xFF3B82F6),
-                          iconBg: const Color(0xFFEFF6FF),
+                          iconBg: const Color(
+                            0xFF3B82F6,
+                          ).withValues(alpha: 0.15),
                           title: 'Help & Support',
                           subtitle: 'Get assistance anytime',
                           onTap: () => context.push('/help-center'),
@@ -975,7 +1008,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                         _actionTile(
                           icon: Icons.star_outline_rounded,
                           iconColor: const Color(0xFFF59E0B),
-                          iconBg: const Color(0xFFFFF8E7),
+                          iconBg: const Color(
+                            0xFFF59E0B,
+                          ).withValues(alpha: 0.15),
                           title: 'Rate the App',
                           subtitle: 'Love TODO? Let us know!',
                           onTap: () => context.push('/rate-app'),
@@ -998,13 +1033,13 @@ class _ProfileScreenState extends State<ProfileScreen>
                       child: ElevatedButton.icon(
                         onPressed: _handleLogout,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red.shade50,
+                          backgroundColor: Colors.red.withValues(alpha: 0.1),
                           foregroundColor: Colors.red.shade400,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18),
                             side: BorderSide(
-                              color: Colors.red.shade100,
+                              color: Colors.red.withValues(alpha: 0.2),
                               width: 1.5,
                             ),
                           ),
@@ -1036,7 +1071,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                     'Todo v2.5.0',
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.grey.shade400,
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withValues(alpha: 0.4),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -1089,11 +1126,11 @@ class _ProfileScreenState extends State<ProfileScreen>
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: gradientColors[0].withOpacity(0.12),
+              color: gradientColors[0].withValues(alpha: 0.12),
               blurRadius: 16,
               offset: const Offset(0, 4),
             ),
@@ -1135,7 +1172,9 @@ class _ProfileScreenState extends State<ProfileScreen>
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 11,
-                color: Colors.grey.shade400,
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.4),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -1154,11 +1193,11 @@ class _ProfileScreenState extends State<ProfileScreen>
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: 0.04),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -1223,15 +1262,20 @@ class _ProfileScreenState extends State<ProfileScreen>
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xFF1F2937),
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
                 Text(
                   subtitle,
-                  style: TextStyle(fontSize: 12, color: Colors.grey.shade400),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.4),
+                  ),
                 ),
               ],
             ),
@@ -1285,15 +1329,20 @@ class _ProfileScreenState extends State<ProfileScreen>
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFF1F2937),
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                   Text(
                     subtitle,
-                    style: TextStyle(fontSize: 12, color: Colors.grey.shade400),
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withValues(alpha: 0.4),
+                    ),
                   ),
                 ],
               ),
@@ -1313,6 +1362,6 @@ class _ProfileScreenState extends State<ProfileScreen>
     height: 1,
     indent: 70,
     endIndent: 16,
-    color: Colors.grey.shade100,
+    color: Theme.of(context).dividerColor.withValues(alpha: 0.1),
   );
 }
