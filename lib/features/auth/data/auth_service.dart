@@ -30,11 +30,11 @@ class AuthService {
   }) async {
     try {
       // Create the account
-      final UserCredential credential =
-      await _auth.createUserWithEmailAndPassword(
-        email: email.trim(),
-        password: password.trim(),
-      );
+      final UserCredential credential = await _auth
+          .createUserWithEmailAndPassword(
+            email: email.trim(),
+            password: password.trim(),
+          );
 
       // Set the display name on the Firebase user profile
       await credential.user?.updateDisplayName(displayName.trim());
@@ -54,8 +54,7 @@ class AuthService {
     required String password,
   }) async {
     try {
-      final UserCredential credential =
-      await _auth.signInWithEmailAndPassword(
+      final UserCredential credential = await _auth.signInWithEmailAndPassword(
         email: email.trim(),
         password: password.trim(),
       );
@@ -78,7 +77,7 @@ class AuthService {
 
       // Get auth tokens from Google
       final GoogleSignInAuthentication googleAuth =
-      await googleUser.authentication;
+          await googleUser.authentication;
 
       // Create Firebase credential from Google tokens
       final OAuthCredential credential = GoogleAuthProvider.credential(
@@ -91,7 +90,11 @@ class AuthService {
     } on FirebaseAuthException catch (e) {
       throw _handleAuthException(e);
     } catch (e) {
-      throw 'Google Sign-In failed. Please try again.';
+      print('DEBUG: Google Sign-In Error: $e');
+      if (e.toString().contains('sign_in_failed')) {
+        throw 'Google Sign-In failed (code 10). Please ensure SHA-1 is added to Firebase Console.';
+      }
+      throw 'Google Sign-In failed. Error: $e';
     }
   }
 
